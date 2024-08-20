@@ -8,6 +8,7 @@ import { PlacesService } from '../../services/places.service';
   styleUrl: './btn-my-location.component.css'
 })
 export class BtnMyLocationComponent {
+
 constructor(
   private placesService: PlacesService,
   private MapService: MapService

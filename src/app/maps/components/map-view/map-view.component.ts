@@ -1,6 +1,7 @@
 import { PlacesService } from './../../services/places.service';
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Map, Popup, Marker } from 'mapbox-gl';
+import { MapService } from '../../services/map.service';
 
 
 @Component({
@@ -13,9 +14,9 @@ export class MapViewComponent implements AfterViewInit {
   @ViewChild('mapDiv')
   mapDivElement!: ElementRef
 
-  constructor(
-    private placesService: PlacesService,
+  constructor( private placesService: PlacesService,
 
+    private mapService:MapService
   ) { }
 
   ngAfterViewInit(): void {
@@ -23,7 +24,7 @@ export class MapViewComponent implements AfterViewInit {
 
     const map = new Map({
       container: this.mapDivElement.nativeElement,
-      style: 'mapbox://styles/mapbox/light-v10', // style URL
+     style: 'mapbox://styles/mapbox/streets-v12', // style URL
       center: this.placesService.useLocation,
       zoom: 14,
     });
@@ -39,7 +40,7 @@ export class MapViewComponent implements AfterViewInit {
       .setPopup( popup )
       .addTo( map )
 
-
+this.mapService.setMap(map);
   }
 
 }

@@ -5,6 +5,7 @@ import { LngLat, LngLatLike, Map } from 'mapbox-gl';
   providedIn: 'root'
 })
 export class MapService {
+
 private map?: Map ;
 
 get isMapReady(){
